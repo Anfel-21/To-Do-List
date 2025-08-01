@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://kit.fontawesome.com/c99d1c9db5.js" crossorigin="anonymous"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/animations/2.1/js/animations.min.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+ <style>-->
+    
+ </style>
+</head>
+<body>
+       <div class="container">
+             <div class="list" >
+                  <div class="tPart">                   
+                        <h2 id="title">مهامي</h2>
+                        <button id="plus"><i class="fa-solid fa-plus fa-sm" ></i></button> 
+                        <div id="wnd">
+                              <div id="modal">
+                                    <button id="quit">x</button>
+                                    <h3 id="modalTitle" style="margin-top: 90px;"> ادخل المهمة</h3>
+                                    <input type="text" id="modalInput" >
+                                    
+                                   <div id="sp"> 
+                                    <button id="btn1">Submit</button>
+                                    </div>
+                             </div> 
+                        </div>
+                  </div>
+                  <div class="bPart">
+                        <div id="taskCnt" >
+                              <div class="task" id="List">
+                              <div class="right">
+                                    <button class="edit" style="background-color: rgb(38, 38, 227);"><i class="fa-solid fa-pen fa-xs" ></i></button>
+                                    <button class="done" style="background-color: rgb(52, 142, 52);"><i class="fa-solid fa-check fa-sm" ></i></button>
+                                    <button class="delete" style="background-color: rgb(162, 46, 46);"><i class="fa-solid fa-trash fa-sm" ></i></button>
+                              </div>
+                              <div class="left">
+                                    <h4>قراءة كتاب</h4>
+                                    <div style="display: flex; align-items: center; ">
+                                          <p style="font-size: 8px;">00/00/0000</p>
+                                          <i class="fa-regular fa-calendar fa-2xs"></i>
+                                    </div></div>
+                              </div>
+                        </div>              
+                  </div>
+             </div>
+       </div>
+</body>
+<script> 
+
+      // 
+      document.getElementById("plus").addEventListener("click",function(){
+            document.getElementById("wnd").style.display =  "flex"
+      })
+
+      //
+      document.getElementById("quit").addEventListener("click",function(){
+            document.getElementById("wnd").style.display =  "none"
+      })
+
+      //
+      document.getElementById("taskCnt").innerHTML = ""
+      let edit = null
+      document.getElementById("btn1").addEventListener("click", function () {
+            let t = document.getElementById("modalInput").value
+            let now = new Date()
+            let date = now.getDate()+"/"+(now.getMonth()+1)+"/"+now.getFullYear()
+            if (edit) {
+                  edit.querySelector("h4").innerText = t
+                  edit = null;
+            } else{
+                  var task = document.createElement("div")
+                  task.className = "task"
+                  task.innerHTML = `
+                        <div class="right">
+                              <button class="edit" style="background-color: rgb(38, 38, 227);"><i class="fa-solid fa-pen fa-xs"></i></button>
+                              <button class="done" style="background-color: rgb(52, 142, 52);"><i class="fa-solid fa-check fa-sm"></i></button>
+                              <button class="delete" style="background-color: rgb(162, 46, 46);"><i class="fa-solid fa-trash fa-sm"></i></button>
+                        </div>
+                        <div class="left">
+                              <h4>${t}</h4>
+                              <div style="display: flex; align-items: center; gap:2px; justify-content: center;">
+                              <p style="font-size: 8px;">${date}</p>
+                              <i class="fa-regular fa-calendar fa-2xs"></i>
+                              </div>
+                        </div>
+                        `
+                  document.getElementById("taskCnt").appendChild(task)
+            }      
+            document.getElementById("modalInput").value = ""
+      
+            
+            let check = true;
+            task.querySelector(".done").addEventListener("click", function () {
+                  if (check) {
+                        this.style.backgroundColor = "rgb(162, 46, 46)";
+                        this.innerHTML = `<i class="fa-solid fa-xmark fa-sm" style="color: #ffffff;"></i>`;
+                        task.style.backgroundColor = `rgb(131, 231, 131)`;
+                        check = false;
+                  } else {
+                        this.style.backgroundColor = "rgb(52, 142, 52)";
+                        this.innerHTML = `<i class="fa-solid fa-check fa-sm"></i>`;
+                        task.style.backgroundColor = `rgb(227, 226, 226)`;
+                        check = true;
+                  }
+            })
+            
+            task.querySelector(".delete").addEventListener("click", function () {
+                  task.remove();              
+           }); 
+            
+            
+            task.querySelector(".edit").addEventListener("click",function(){
+                  document.getElementById("wnd").style.display =  "flex"
+                  document.getElementById("modalInput").value = task.querySelector("h4").innerText
+                  edit = task
+            })
+      
+      })
+      
+</script>
+</html>
+
+
+
