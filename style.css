@@ -52,6 +52,39 @@
 .right{
     padding-left: 10px;
 }
+@media (max-width:360px) {
+.task{
+   display: flex; 
+   flex-direction: column-reverse; 
+   justify-content: center;
+   align-items: center;
+   gap: 2px;
+}
+.right button{
+    height: 15px;
+    width: 18px;
+    border-radius: 50%;
+    line-height: 0;
+    border:none;
+    margin-left: 10px;
+    color: #ffffff;
+}
+.right{
+    padding-left: 0px;
+}
+}
+@media (min-width:360px) and (max-width:475px) {
+.right button{
+    height: 23px;
+    width: 23px;
+    border-radius: 50%;
+    line-height: 0;
+    border:none;
+    margin-left: 10px;
+    color: #ffffff;
+}
+}
+@media (min-width:475px){ 
 .right button{
     height: 23px;
     width: 23px;
@@ -60,6 +93,7 @@
     border:none;
     margin-left: 25px;
     color: #ffffff;
+}
 }
 .left{
     padding-right: 8px;   

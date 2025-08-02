@@ -74,6 +74,7 @@
             if (edit) {
                   edit.querySelector("h4").innerText = t
                   edit = null;
+                  document.getElementById("wnd").style.display =  "none"
             } else{
                   var task = document.createElement("div")
                   task.className = "task"
@@ -92,6 +93,7 @@
                         </div>
                         `
                   document.getElementById("taskCnt").appendChild(task)
+                  document.getElementById("wnd").style.display =  "none"
             }      
             document.getElementById("modalInput").value = ""
       
