@@ -11,8 +11,13 @@
     padding-top: 50px; 
 }
 .list{
-    width: 60%;
+    width: 70%;
     background-color: rgb(209, 205, 205);
+}
+@media (min-width:475px) and (max-width:950px) {
+.list{
+    width: 80%;
+}
 }
 .tPart{
     display: flex;
@@ -52,7 +57,10 @@
 .right{
     padding-left: 10px;
 }
-@media (max-width:360px) {
+@media (max-width:225px) {
+.list{
+    width: 90%;
+}
 .task{
    display: flex; 
    flex-direction: column-reverse; 
@@ -73,10 +81,13 @@
     padding-left: 0px;
 }
 }
-@media (min-width:360px) and (max-width:475px) {
+@media (min-width:225px) and (max-width:475px) {
+.list{
+    width: 90%;
+}
 .right button{
-    height: 23px;
-    width: 23px;
+    height: 18px;
+    width: 18px;
     border-radius: 50%;
     line-height: 0;
     border:none;
